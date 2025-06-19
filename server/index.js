@@ -4,11 +4,12 @@ const cors = require('cors');
 const { Server } = require('socket.io');
 const http = require('http');
 
+const io = new Server({
+    cors: true,
+});
+
 const app = express();
 app.use(bodyParser.json());
-
-const server = http.createServer(app);
-
 
 const emailToSocketMapping = new Map();
 
@@ -19,6 +20,9 @@ io.on("connection", (socket) => {
         console.log("User", emailId, "joined room", roomId);
         emailToSocketMapping.set(emailId, socket.id);
         socket.join(roomId);
+        socket.emit("joined-room", {
+            roomId
+        });
         socket.broadcast.to(roomId).emit("user-joined", {emailId});
     });
 });
