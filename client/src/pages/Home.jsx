@@ -7,13 +7,16 @@ const Homepage = () => {
     const [email, setEmail] = useState();
     const [roomId, setRoomId] = useState();
 
-    const handleRoomJoined = ({roomId}) => {
+    const handleRoomJoined = useCallback(({roomId}) => {
         Navigate(`/room/${roomId}`);
-    }
+    },[Navigate]);
 
     useEffect(() => {
         socket.on('joined-room', handleRoomJoined);
-    }, [socket])
+        return () => {
+            socket.off('joined-room', handleRoomJoined);
+        }
+    }, [handleRoomJoined, socket])
     
     const handleJoinRoom = () => {
         socket.emit("join-room", {
