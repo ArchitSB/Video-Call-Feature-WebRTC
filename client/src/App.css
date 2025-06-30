@@ -1,24 +1,112 @@
-.homepage-container{
-  width:100vw;
-  height: 100vh;
+body {
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-.homepage-container .input-container input{
-  font-size: 24px;
-  display: block;
-  padding: 10px 20px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 12px
+h1, h4 {
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
 }
 
-.homepage-container .input-container button{
+form {
+  background: rgba(255,255,255,0.05);
+  padding: 32px 24px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.18);
+  display: inline-block;
+  margin-top: 24px;
+}
+
+label {
+  color: #eee;
+  font-size: 1rem;
+  margin-bottom: 6px;
   display: block;
-  font-size: 24px;
-  width: 100%;
-  padding: 10px 20px;
+  text-align: left;
+}
+
+input {
+  width: 220px;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #232526;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+input:focus {
+  box-shadow: 0 0 0 2px #61dafb;
+}
+
+button {
+  background: linear-gradient(90deg, #61dafb 0%, #1e90ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  margin: 8px 0;
+  box-shadow: 0 4px 16px rgba(97,218,251,0.15);
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #1e90ff 0%, #61dafb 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.react-player {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  margin: 16px auto;
+  background: #111;
+}
+
+.stream-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.stream-box {
+  background: rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  min-width: 220px;
+}
+
+@media (max-width: 700px) {
+  .stream-section {
+    flex-direction: column;
+    gap: 16px;
+  }
+  form {
+    width: 90vw;
+    min-width: unset;
+  }
 }
